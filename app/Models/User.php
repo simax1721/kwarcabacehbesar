@@ -42,4 +42,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    function gudep() {
+        return $this->belongsToMany(Gudep::class, 'user_gudeps', 'user_id', 'gudep_id')->withPivot('id');
+    }
 }

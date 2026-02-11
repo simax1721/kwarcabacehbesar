@@ -21,14 +21,14 @@
                                 <select class="kecamatan form-control" id="kecamatan" name="kecamatan">
                                 </select>
                         </div> --}}
-                        <input type="hidden" id="code" name="code" value="{{ $ranting->district_code }}">
+                        <input type="hidden" id="code" name="code" value="{{ $ranting->code }}">
                         <div class="form-group">
                             <label for="name">Nama Kwaran Ranting</label>
                             <input class="form-control" id="name" name="name" required value="{{ $ranting->name }}" readonly>
                         </div>
                         <div class="form-group">
                             <label for="nokwaranting">Nomor Kwaran Ranting</label>
-                            <input class="form-control" id="nokwaranting" name="nokwaranting" required value="{{ $ranting->nokwaranting }}">
+                            <input class="form-control" id="nokwaranting" name="nokwaranting" required value="{{ $ranting->nokwaranting ?? '01.06.' }}">
                         </div>
                         <div class="form-group">
                             <label for="ketuakwaranting">Ketua Kwaran Ranting</label>
@@ -39,7 +39,7 @@
                             <textarea class="form-control" id="alamat" name="alamat"></textarea>
                         </div> --}}
 
-                        <button type="button" class="btn btn-success" id="store">Simpan</button>
+                        <button type="button" class="btn btn-success" id="update">Simpan</button>
                     {{-- </form> --}}
                 </div>
             </div>
@@ -85,19 +85,31 @@
             });
         });
 
-        $('#store').click(function (e) { 
+        $('#update').click(function (e) { 
             e.preventDefault();
-            let selectedkecamatan = $('.kecamatan').select2('data');
-            let kecamatan_code = '';
-            let kecamatan_name = '';
-
+            let code = $('#code').val();
+            let name = $('#name').val();
             let nokwaranting = $('#nokwaranting').val();
             let ketuakwaranting = $('#ketuakwaranting').val();
-            
-            if (selectedkecamatan.length > 0) {
-                kecamatan_code = selectedkecamatan[0].id;
-                kecamatan_name = selectedkecamatan[0].text;
-            }
+
+            $.ajax({
+                url: `/admin/data/ranting/update/${code}`,
+                type: "POST",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    code: code,
+                    name: name,
+                    nokwaranting: nokwaranting,
+                    ketuakwaranting: ketuakwaranting,
+                },
+                success: function(response) {
+                    toastr.success(response.text);
+                    window.location.href = "/admin/data/ranting";
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr);
+                }
+            });
         });
         
         

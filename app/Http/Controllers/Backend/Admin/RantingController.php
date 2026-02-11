@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Ranting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
 
 class RantingController extends Controller
@@ -26,6 +27,36 @@ class RantingController extends Controller
     function post_store(Request $request) {
         
         return 0;
+    }
+
+    function post_update(Request $request, $id) {
+        
+        $validator = Validator::make($request->all(),[
+            'nokwaranting' => 'nullable|string|unique:rantings,nokwaranting,'.$request->code.',code',
+            'name' => 'required|string',
+            'ketuakwaranting' => 'nullable|string',
+            'address' => 'nullable|string',
+        ]);
+         //check if validation fails
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        $ranting = Ranting::findOrFail($request->code);
+        
+        $ranting->update([
+            'nokwaranting' => $request->get('nokwaranting') ?? $ranting->nokwaranting,
+            'name' => $request->get('name') ?? $ranting->name,
+            'ketuakwaranting' => $request->get('ketuakwaranting') ?? $ranting->ketuakwaranting,
+            'address' => $request->get('address') ?? $ranting->address,
+        ]);
+
+        return response()->json([
+            'icon' => 'success',
+            'title' => 'Ranting',
+            'text' => 'Data ranting berhasil diperbarui!',
+        ]);
+            
     }
 
     function get_datakecamatan(Request $request)
@@ -72,6 +103,11 @@ class RantingController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
+    }
+
+    function get_show($id) {
+        $ranting = Ranting::where('code', $id)->firstOrFail();
+        return response()->json($ranting);
     }
     
     function get_datakecamatanimportcepat(Request $request)

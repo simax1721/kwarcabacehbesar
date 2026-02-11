@@ -19,6 +19,10 @@ class HomeController extends Controller
         return view('frondend.gugusdepan', compact('rantings'));
     }
 
+    function get_kegiatan() {
+        return view('frondend.kegiatan');
+    }
+
     function get_gugusDepanView($id) {
         $gudep = Gudep::findOrFail($id);
         return view('frondend.gugusdepanview', compact('gudep'));
@@ -86,4 +90,6 @@ class HomeController extends Controller
         }
 
     }
+
+    
 }

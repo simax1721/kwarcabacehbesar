@@ -9,8 +9,11 @@ class Ranting extends Model
 {
     use HasFactory;
 
-    protected $keyType = 'code';
+
+    protected $primaryKey = 'code';
     public $incrementing = false;
+    protected $keyType = 'string';
+
     protected $guarded = [];
 
     function gudeps()

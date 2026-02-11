@@ -138,6 +138,7 @@ class GudepController extends Controller
                 'regency_code' => '1106',
                 'page' => $request->get('page') ?? 1,
                 'district_code' => $request->get('district_code') ?? '',
+                'district_name' => $request->get('district_name') ?? '',
                 'name' => $request->get('name'),
             ]
         );
@@ -206,5 +207,28 @@ class GudepController extends Controller
                 ->addIndexColumn()
                 ->make(true);
         }
+    }
+
+    function get_datakegudep(Request $request) {
+        $search = $request->get('q');
+
+        $query = Gudep::query();
+
+        if ($search) {
+            $query->where('name', 'like', '%' . $search . '%')->orWhere('nogudeppa', 'like', '%' . $search . '%')
+                  ->orWhere('nogudeppi', 'like', '%' . $search . '%');
+        }
+
+        $gudeps = $query->limit(10)->get();
+
+        $results = [];
+        foreach ($gudeps as $gudep) {
+            $results[] = [
+                'id' => $gudep->id,
+                'text' => $gudep->nogudeppa . ' - ' . $gudep->nogudeppi . ' - ' . $gudep->name,
+            ];
+        }
+
+        return response()->json($results);
     }
 }

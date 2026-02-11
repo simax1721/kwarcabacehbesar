@@ -15,4 +15,9 @@ class Gudep extends Model
     {
         return $this->hasOne(Ranting::class, 'code', 'district_code')->first()?->name;
     }
+
+    function ranting()
+    {
+        return $this->belongsTo(Ranting::class, 'district_code', 'code');
+    }
 }

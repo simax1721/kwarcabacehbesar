@@ -23,7 +23,7 @@
                         </div>
                         <div class="form-group">
                             <label for="nokwaranting">Nomor Kwaran Ranting</label>
-                            <input class="form-control" id="nokwaranting" name="nokwaranting" required value="01.06.">
+                            <input class="form-control" id="nokwaranting" name="nokwaranting" required value="">
                         </div>
                         <div class="form-group">
                             <label for="ketuakwaranting">Ketua Kwaran Ranting</label>

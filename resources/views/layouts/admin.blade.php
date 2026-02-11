@@ -56,43 +56,69 @@
 
         <!-- Divider -->
         <hr class="sidebar-divider">
-        <div class="sidebar-heading">DASHBOARD</div>
-
+        
         @if (Auth::guard('admin')->check())
+        <div class="sidebar-heading">DASHBOARD</div>
             <li class="nav-item ">
             <a class="nav-link pb-2" href="{{ url('/admin/dashboard') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
-        </li>
+            </li>
+            
+            {{-- <li class="nav-item ">
+                <a class="nav-link pb-2" href="{{ url('/profile') }}">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>PROFILE</span></a>
+            </li> --}}
+            
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">DATA KWARCAB</div>
+            <li class="nav-item ">
+                <a class="nav-link pb-2" href="{{ url('/admin/data/kegiatan') }}">
+                    <i class="fas fa-fw fa-newslater"></i>
+                    <span>Data Kegiatan</span>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link pb-2" href="{{ url('/admin/data/ranting') }}">
+                    <i class="fas fa-fw fa-map"></i>
+                    <span>Data Ranting</span>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link pb-2" href="{{ url('/admin/data/gudep') }}">
+                    <i class="fas fa-fw fa-map-marked-alt"></i>
+                    <span>Data Gugus Depan</span>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link pb-2" href="{{ url('/admin/data/user') }}">
+                    <i class="fas fa-fw fa-user-cog"></i>
+                    <span>Data User</span>
+                </a>
+            </li>
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">Pendaftaran</div>
+        @else 
         
-        {{-- <li class="nav-item ">
-            <a class="nav-link pb-2" href="{{ url('/profile') }}">
-                <i class="fas fa-fw fa-user"></i>
-                <span>PROFILE</span></a>
-        </li> --}}
-        
-        <hr class="sidebar-divider">
-        <div class="sidebar-heading">DATA KWARCAB</div>
-        <li class="nav-item ">
-            <a class="nav-link pb-2" href="{{ url('/admin/data/kegiatan') }}">
-                <i class="fas fa-fw fa-user-cog"></i>
-                <span>Data Kegiatan</span>
-            </a>
-        </li>
-        <li class="nav-item ">
-            <a class="nav-link pb-2" href="{{ url('/admin/data/ranting') }}">
-                <i class="fas fa-fw fa-map"></i>
-                <span>Data Ranting</span>
-            </a>
-        </li>
-        <li class="nav-item ">
-            <a class="nav-link pb-2" href="{{ url('/admin/data/gudep') }}">
-                <i class="fas fa-fw fa-map-marked-alt"></i>
-                <span>Data Gugus Depan</span>
-            </a>
-        </li>
-        <hr class="sidebar-divider">
-        <div class="sidebar-heading">Pendaftaran</div>
+            <div class="sidebar-heading">DASHBOARD</div>
+            <li class="nav-item ">
+                <a class="nav-link pb-2" href="{{ url('/dashboard') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">DATA KWARCAB</div>
+            <li class="nav-item ">
+                <a class="nav-link pb-2" href="{{ url('/user/data/gudep') }}">
+                    <i class="fas fa-fw fa-map-marked-alt"></i>
+                    <span>Data Gugus Depan</span>
+                </a>
+            </li>
+
+
+
         @endif
         
 

@@ -22,14 +22,14 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="nogudeppa">Nomor Gudep</label>
-                                            <input class="form-control" id="nogudeppa" name="nogudeppa" placeholder="01.01">
+                                            <input class="form-control" id="nogudeppa" name="nogudeppa" placeholder="01.01" >
                                         </div>
                                         
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="nogudeppi" class="text-white">Nomor Gudep</label>
-                                            <input class="form-control" id="nogudeppi" name="nogudeppi" placeholder="01.02">
+                                            <input class="form-control" id="nogudeppi" name="nogudeppi" placeholder="01.02" >
                                         </div>
                                         
                                     </div>
@@ -167,6 +167,15 @@
                     $('#status').val(data.status);
                     $('#ranting').val(data.district_name);
                     $('#address').val(data.address);
+
+                $.get(`/admin/data/ranting/show/${data.district_code}`, data,
+                    function (data, textStatus, jqXHR) {
+                        $('#nogudeppa').val(data.nokwaranting + '.');
+                        $('#nogudeppi').val(data.nokwaranting + '.');
+                    },
+                    "json"
+                );
+
 
                     save_data = new FormData(); // 🔥 reset
 
