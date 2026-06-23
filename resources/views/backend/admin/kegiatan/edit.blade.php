@@ -33,6 +33,11 @@
 @endsection
 
 @push('scripts')
+
+        <script>
+            CKEDITOR.replace('description');
+        </script>
+
     <script>
         $('#update').on('click', function() {
             let id_kegiatan = $('#id_kegiatan').val();
@@ -40,7 +45,10 @@
             formData.append('title', $('#title').val());
             formData.append('date', $('#date').val());
             $('#thumbnail')[0].files[0] ? formData.append('thumbnail', $('#thumbnail')[0].files[0]) : null;
-            formData.append('description', $('#description').val());
+            // formData.append('description', $('#description').val());
+            let descriptionData = CKEDITOR.instances.description.getData();
+            console.log(descriptionData);
+            formData.append('description', descriptionData);
 
             $.ajax({
                 url: `/admin/data/kegiatan/update/${id_kegiatan}`,

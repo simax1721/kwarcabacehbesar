@@ -18,4 +18,9 @@ class Kegiatan extends Model
         $base = rtrim(env('APP_URL'). '/uploads/thumbnails/', '/');
         return $base . '/' . ltrim($value, '/');
     }
+
+    function partisipans() {
+        return $this->hasMany(Kegiatan_partisipan::class, 'kegiatans_id');
+    }
+    
 }

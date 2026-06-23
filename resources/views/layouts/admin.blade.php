@@ -117,6 +117,15 @@
                 </a>
             </li>
 
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">Pendaftaran</div>
+            <li class="nav-item ">
+                <a class="nav-link pb-2" href="{{ url('/user/pendaftaran') }}">
+                    <i class="fas fa-fw fa-user-tag"></i>
+                    <span>Partisipan Kegiatan</span>
+                </a>
+            </li>
+
 
 
         @endif
@@ -291,10 +300,7 @@
 <script src="{{ url('adminvendor/js/sb-admin-2.min.js') }}"></script>
 <script src="{{ url('adminvendor/vendor/toastr/toastr.min.js') }}"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<script>
-    
-</script>
+<script src="{{ url('adminvendor/vendor/ckeditor/ckeditor.js') }}"></script>
 
 @stack('scripts')
 </body>

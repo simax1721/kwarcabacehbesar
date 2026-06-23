@@ -61,7 +61,7 @@ class KegiatanController extends Controller
             'title' => 'required|string|max:255',
             'date' => 'nullable|date',
             'thumbnail' => 'nullable|image|max:2048',
-            'description' => 'nullable|string',
+            'description' => 'required|min:3',
         ]);
 
         if ($validator->fails()) {
@@ -123,13 +123,16 @@ class KegiatanController extends Controller
                         return '';
                     }
                 })
+                ->addColumn('description', function($row) {
+                    return $row->description ? substr($row->description, 0, 50) . '...' : '-';
+                })
                 ->addColumn('action', function ($row) {
                    return '<div style="display: inline-flex;" class="">
                             <a href="'.url('/admin/data/kegiatan/edit/'.$row->id).'" id="btn-edit" data-id="' . $row->id . '" class="btn btn-sm btn-info mr-2">Edit</a>
                             <a href="'.url('/admin/data/kegiatan/edit/'.$row->id).'" id="btn-delete" data-id="' . $row->id . '" class="btn btn-sm btn-danger">Delete</a>
                             </div>';
                 })
-                ->rawColumns(['thumbnail', 'action'])
+                ->rawColumns(['thumbnail', 'description', 'action'])
                 ->make(true);
         }
     }

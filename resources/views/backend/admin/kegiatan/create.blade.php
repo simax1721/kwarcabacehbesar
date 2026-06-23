@@ -28,13 +28,22 @@
 @endsection
 
 @push('scripts')
+
+    <script>
+        CKEDITOR.replace('description');
+    </script>
+
     <script>
         $('#save').on('click', function() {
             let formData = new FormData();
             formData.append('title', $('#title').val());
             formData.append('date', $('#date').val());
             $('#thumbnail')[0].files[0] ? formData.append('thumbnail', $('#thumbnail')[0].files[0]) : null;
-            formData.append('description', $('#description').val());
+            // formData.append('description', $('#description').val());
+            let descriptionData = CKEDITOR.instances.description.getData();
+            console.log(descriptionData);
+            
+            formData.append('description', descriptionData);
 
             $.ajax({
                 url: '{{ url("/admin/data/kegiatan/store") }}',

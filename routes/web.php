@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\Admin\MainController;
 use App\Http\Controllers\Backend\Admin\RantingController;
 use App\Http\Controllers\Backend\Admin\UserController;
 use App\Http\Controllers\Backend\User\GudepController as UserGudepController;
+use App\Http\Controllers\Backend\User\PendaftaranController as UserPendaftaranController;
 use App\Http\Controllers\Frondend\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -51,6 +52,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::auto('/user/data/gudep', UserGudepController::class);
+    Route::auto('/user/pendaftaran', UserPendaftaranController::class);
 });
 
 require __DIR__.'/auth.php';

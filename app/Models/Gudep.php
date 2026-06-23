@@ -20,4 +20,12 @@ class Gudep extends Model
     {
         return $this->belongsTo(Ranting::class, 'district_code', 'code');
     }
+
+    function kegiatan_partisipan() {
+        return $this->hasMany(Kegiatan_partisipan::class, 'gudeps_id');
+    }
+
+    function user() {
+        return $this->belongsToMany(User::class, 'user_gudeps', 'gudep_id', 'user_id')->withPivot('id');
+    }
 }
