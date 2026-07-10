@@ -3,6 +3,11 @@
 namespace App\Http\Controllers\Backend\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Gudep;
+use App\Models\Kegiatan;
+use App\Models\Kegiatan_partisipan;
+use App\Models\Ranting;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +19,24 @@ class MainController extends Controller
 
     function get_dashboard() {
         if (Auth::guard('admin')->check()) {
-            return view('backend.admin.dashboard');
+            $totalRanting = Ranting::count();
+            $totalGudep = Gudep::count();
+            $totalUser = User::count();
+            $totalKegiatan = Kegiatan::count();
+            $totalPartisipan = Kegiatan_partisipan::count();
+
+            $kegiatanMendatang = Kegiatan::where('date', '>=', date('Y-m-d'))->orderBy('date')->take(5)->get();
+            $partisipanTerbaru = Kegiatan_partisipan::with(['kegiatan', 'gudep'])->latest()->take(5)->get();
+
+            return view('backend.admin.dashboard', compact(
+                'totalRanting',
+                'totalGudep',
+                'totalUser',
+                'totalKegiatan',
+                'totalPartisipan',
+                'kegiatanMendatang',
+                'partisipanTerbaru'
+            ));
         } else {
             return redirect('admin/login');
         }

@@ -1,7 +1,7 @@
 @extends('layouts.adminauth')
 
 @section('main-content')
-<img style="width: 120px;" class="" src="{{ url('SIG-HITAM.png') }}" alt="">
+<img style="width: 120px;" class="" src="{{ url('frondend/assets/img/logo-teks.png') }}" alt="">
 {{-- <h1 class="text-dark">SIG</h1> --}}
 <h1 class="mt-5 text-dark display-4">Login Admin</h1>
 

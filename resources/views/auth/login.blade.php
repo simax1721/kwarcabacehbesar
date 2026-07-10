@@ -1,7 +1,7 @@
 @extends('layouts.adminauth')
 
 @section('main-content')
-<img style="width: 120px;" class="" src="{{ url('SIG-HITAM.png') }}" alt="">
+<img style="width: 50%;" class="" src="{{ url('frondend/assets/img/logo-teks.png') }}" alt="">
 {{-- <h1 class="text-dark">SIG</h1> --}}
 <h1 class="mt-5 text-dark display-4">Login </h1>
 
@@ -51,7 +51,7 @@
         </div>
 
         <div class="" style="margin-top: 40px">
-            <span style="font-size: 16px; margin-top: 15px;">New Here? <a href="{{ route('register') }}" style="color: #027864">Create Account</a></span>
+            {{-- <span style="font-size: 16px; margin-top: 15px;">New Here? <a href="{{ route('register') }}" style="color: #027864">Create Account</a></span> --}}
             <br> <span style="font-size: 16px; margin-top: 15px;">Back to <a href="{{ url('/') }}" style="color: #027864">Home</a></span>
         </div>
 

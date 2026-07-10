@@ -180,18 +180,28 @@ class PendaftaranController extends Controller
                     $kegiatan_partisipan = Kegiatan_partisipan::where('kegiatans_id', $row->id)->where('gudeps_id', auth()->user()->gudep->first()->id)->first();
 
                     if (!$kegiatan_partisipan) {
-                        return '';
+                        return '-';
                     }
 
-                    $anggota_pa = Kegiatan_partisipan_anggota::where('kegiatan_partisipans_id', $row->id)->where('is_pa', 1)->count();
-                    $anggota_pi = Kegiatan_partisipan_anggota::where('kegiatan_partisipans_id', $row->id)->where('is_pi', 1)->count();
+                    // BUGFIX: sebelumnya query ini memakai $row->id (id Kegiatan),
+                    // padahal kolom kegiatan_partisipans_id merujuk ke id Kegiatan_partisipan,
+                    // sehingga hasil hitung anggota selalu salah/kosong.
+                    $anggota_pa = Kegiatan_partisipan_anggota::where('kegiatan_partisipans_id', $kegiatan_partisipan->id)->where('is_pa', 1)->count();
+                    $anggota_pi = Kegiatan_partisipan_anggota::where('kegiatan_partisipans_id', $kegiatan_partisipan->id)->where('is_pi', 1)->count();
 
                     if ($anggota_pa > 0 && $anggota_pi > 0) {
-                        $ready = '100%';
+                        $percent = 100;
+                    } elseif ($anggota_pa > 0 || $anggota_pi > 0) {
+                        $percent = 50;
                     } else {
-                        $ready = '50%';
+                        $percent = 0;
                     }
-                    return $ready;
+
+                    $color = $percent == 100 ? 'success' : ($percent == 50 ? 'warning' : 'danger');
+
+                    return '<div class="progress" style="height: 20px; min-width: 100px;">
+                                <div class="progress-bar bg-'.$color.'" role="progressbar" style="width: '.$percent.'%;" aria-valuenow="'.$percent.'" aria-valuemin="0" aria-valuemax="100">'.$percent.'%</div>
+                            </div>';
                 })
                 ->addColumn('action', function($row) {
                     $gudep = auth()->user()->gudep->first();
@@ -210,7 +220,7 @@ class PendaftaranController extends Controller
                         
                     }
                 })
-                ->rawColumns(['action'])
+                ->rawColumns(['action', 'readiness'])
                 ->make(true);
         }
     }

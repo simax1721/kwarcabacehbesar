@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frondend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Gudep;
+use App\Models\Kegiatan;
 use App\Models\Ranting;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -11,7 +12,12 @@ use Yajra\DataTables\DataTables;
 class HomeController extends Controller
 {
     function get_index() {
-        return view('frondend.home');
+        $totalGudep = Gudep::count();
+        $totalRanting = Ranting::count();
+        $totalKegiatan = Kegiatan::count();
+        $kegiatanTerbaru = Kegiatan::latest('date')->take(3)->get();
+
+        return view('frondend.home', compact('totalGudep', 'totalRanting', 'totalKegiatan', 'kegiatanTerbaru'));
     }
 
     function get_gugusDepan() {
@@ -20,7 +26,19 @@ class HomeController extends Controller
     }
 
     function get_kegiatan() {
-        return view('frondend.kegiatan');
+        $kegiatans = Kegiatan::orderByDesc('date')->paginate(9);
+        return view('frondend.kegiatan', compact('kegiatans'));
+    }
+
+    function get_kegiatanDetail($id) {
+        $kegiatan = Kegiatan::findOrFail($id);
+        $kegiatanLainnya = Kegiatan::where('id', '!=', $id)->orderByDesc('date')->take(3)->get();
+
+        return view('frondend.kegiatandetail', compact('kegiatan', 'kegiatanLainnya'));
+    }
+
+    function get_strukturOrganisasi() {
+        return view('frondend.strukturorganisasi');
     }
 
     function get_gugusDepanView($id) {

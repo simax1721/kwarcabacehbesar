@@ -38,9 +38,9 @@
                 </div>
 
             </div>
-            <div class="col-lg-8  d-flex align-items-center justify-content-center" style="background-color: #004C3F; ">
+            <div class="col-lg-8  d-flex align-items-center justify-content-center" style="background-color: #006400; ">
                 {{-- <h1 class="text-white">SIG</h1> --}}
-                <img class="d-none d-lg-block" src="{{ url('SIG-PUTIH.png') }}" alt="" style="width: 50%">
+                <img class="d-none d-lg-block" src="{{ url('frondend/assets/img/logo-teks.png') }}" alt="" style="width: 50%">
             </div>
         </div>
     </main>

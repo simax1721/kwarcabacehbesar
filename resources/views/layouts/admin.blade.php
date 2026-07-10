@@ -99,6 +99,12 @@
             </li>
             <hr class="sidebar-divider">
             <div class="sidebar-heading">Pendaftaran</div>
+            <li class="nav-item ">
+                <a class="nav-link pb-2" href="{{ url('/admin/pendaftaran') }}">
+                    <i class="fas fa-fw fa-user-tag"></i>
+                    <span>Partisipan Kegiatan</span>
+                </a>
+            </li>
         @else 
         
             <div class="sidebar-heading">DASHBOARD</div>

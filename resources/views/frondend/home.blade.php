@@ -7,15 +7,13 @@
       <div class="row gy-5" data-aos="fade-in">
         <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
           <h2>Selamat Datang Di <span>Kwarcab Aceh Besar</span></h2>
-          <p>Gerakan Pramuka Kwartir Cabang Aceh Besar.</p>
-          {{-- <div class="d-flex justify-content-center justify-content-lg-start">
-            <a href="#about" class="btn-get-started">Get Started</a>
-            <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
-          </div> --}}
+          <p>Gerakan Pramuka Kwartir Cabang Aceh Besar &mdash; membentuk generasi muda yang berkarakter, mandiri, dan berjiwa kepemimpinan melalui pendidikan kepramukaan.</p>
+          <div class="d-flex justify-content-center justify-content-lg-start">
+            <a href="{{ url('/kegiatan') }}" class="btn-get-started">Lihat Kegiatan</a>
+          </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2">
           <img src="{{ url('frondend') }} /assets/img/hero-img.svg" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100">
-          {{-- <img src="{{ url('frondend') }} /assets/img/logo-teks.png" class="img-fluid my-5" alt="" data-aos="zoom-out" data-aos-delay="100"> --}}
         </div>
       </div>
     </div>
@@ -26,29 +24,29 @@
 
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="icon-box">
-              <div class="icon"><i class="bi bi-easel"></i></div>
-              <h4 class="title"><a href="" class="stretched-link">Lorem Ipsum</a></h4>
+              <div class="icon"><i class="bi bi-map-fill"></i></div>
+              <h4 class="title"><a href="{{ url('/gugus-depan') }}" class="stretched-link">Gugus Depan</a></h4>
             </div>
           </div><!--End Icon Box -->
 
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="icon-box">
-              <div class="icon"><i class="bi bi-gem"></i></div>
-              <h4 class="title"><a href="" class="stretched-link">Sed ut perspiciatis</a></h4>
+              <div class="icon"><i class="bi bi-diagram-3-fill"></i></div>
+              <h4 class="title"><a href="{{ url('/struktur-organisasi') }}" class="stretched-link">Struktur Organisasi</a></h4>
             </div>
           </div><!--End Icon Box -->
 
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="icon-box">
-              <div class="icon"><i class="bi bi-geo-alt"></i></div>
-              <h4 class="title"><a href="" class="stretched-link">Magni Dolores</a></h4>
+              <div class="icon"><i class="bi bi-calendar-event-fill"></i></div>
+              <h4 class="title"><a href="{{ url('/kegiatan') }}" class="stretched-link">Informasi Kegiatan</a></h4>
             </div>
           </div><!--End Icon Box -->
 
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="500">
             <div class="icon-box">
-              <div class="icon"><i class="bi bi-command"></i></div>
-              <h4 class="title"><a href="" class="stretched-link">Nemo Enim</a></h4>
+              <div class="icon"><i class="bi bi-people-fill"></i></div>
+              <h4 class="title"><a href="{{ url('login') }}" class="stretched-link">Login Gugus Depan</a></h4>
             </div>
           </div><!--End Icon Box -->
 
@@ -67,37 +65,29 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>About Us</h2>
-          <p>Aperiam dolorum et et wuia molestias qui eveniet numquam nihil porro incidunt dolores placeat sunt id nobis omnis tiledo stran delop</p>
+          <h2>Tentang Kami</h2>
+          <p>Kwartir Cabang Gerakan Pramuka Aceh Besar merupakan lembaga penyelenggara pendidikan kepramukaan di tingkat Kabupaten Aceh Besar</p>
         </div>
 
         <div class="row gy-4">
           <div class="col-lg-6">
-            <h3>Voluptatem dignissimos provident quasi corporis</h3>
+            <h3>Membentuk Karakter Generasi Muda Aceh Besar</h3>
             <img src="{{ url('frondend') }} /assets/img/about.jpg" class="img-fluid rounded-4 mb-4" alt="">
-            <p>Ut fugiat ut sunt quia veniam. Voluptate perferendis perspiciatis quod nisi et. Placeat debitis quia recusandae odit et consequatur voluptatem. Dignissimos pariatur consectetur fugiat voluptas ea.</p>
-            <p>Temporibus nihil enim deserunt sed ea. Provident sit expedita aut cupiditate nihil vitae quo officia vel. Blanditiis eligendi possimus et in cum. Quidem eos ut sint rem veniam qui. Ut ut repellendus nobis tempore doloribus debitis explicabo similique sit. Accusantium sed ut omnis beatae neque deleniti repellendus.</p>
+            <p>Kwartir Cabang (Kwarcab) Gerakan Pramuka Aceh Besar bertugas membina, mengembangkan, dan mengoordinasikan seluruh kegiatan kepramukaan di wilayah Kabupaten Aceh Besar, mulai dari tingkat Ranting hingga Gugus Depan yang berada di satuan pendidikan.</p>
           </div>
           <div class="col-lg-6">
             <div class="content ps-0 ps-lg-5">
               <p class="fst-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
+                Melalui pendidikan kepramukaan, Kwarcab Aceh Besar berkomitmen mencetak generasi muda yang disiplin, mandiri, berjiwa sosial, dan cinta tanah air sesuai dengan Tri Satya dan Dasa Darma Pramuka.
               </p>
               <ul>
-                <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                <li><i class="bi bi-check-circle-fill"></i> Membina dan mengembangkan Gugus Depan di seluruh Ranting Aceh Besar.</li>
+                <li><i class="bi bi-check-circle-fill"></i> Menyelenggarakan berbagai kegiatan kepramukaan secara berkala.</li>
+                <li><i class="bi bi-check-circle-fill"></i> Mendorong partisipasi aktif anggota Pramuka Penggalang dan Penegak dalam kegiatan positif dan bermanfaat bagi masyarakat.</li>
               </ul>
               <p>
-                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
+                Informasi seputar data Gugus Depan, struktur organisasi, serta agenda kegiatan Kwarcab dapat diakses secara terbuka melalui halaman informasi pada situs ini.
               </p>
-
-              <div class="position-relative mt-4">
-                <img src="{{ url('frondend') }} /assets/img/about-2.jpg" class="img-fluid rounded-4" alt="">
-                <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
-              </div>
             </div>
           </div>
         </div>
@@ -105,15 +95,89 @@
       </div>
     </section><!-- End About Us Section -->
 
-    
+    <!-- ======= Stats Counter Section ======= -->
+    <section id="stats-counter" class="stats-counter">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row gy-4 align-items-center">
+
+          <div class="col-lg-6">
+            <img src="{{ url('frondend') }} /assets/img/stats-img.svg" alt="" class="img-fluid">
+          </div>
+
+          <div class="col-lg-6">
+
+            <div class="stats-item d-flex align-items-center">
+              <span data-purecounter-start="0" data-purecounter-end="{{ $totalRanting }}" data-purecounter-duration="1" class="purecounter">{{ $totalRanting }}</span>
+              <p><strong>Ranting</strong> tersebar di seluruh wilayah Kabupaten Aceh Besar</p>
+            </div><!-- End Stats Item -->
+
+            <div class="stats-item d-flex align-items-center">
+              <span data-purecounter-start="0" data-purecounter-end="{{ $totalGudep }}" data-purecounter-duration="1" class="purecounter">{{ $totalGudep }}</span>
+              <p><strong>Gugus Depan</strong> aktif terdaftar di bawah Kwarcab Aceh Besar</p>
+            </div><!-- End Stats Item -->
+
+            <div class="stats-item d-flex align-items-center">
+              <span data-purecounter-start="0" data-purecounter-end="{{ $totalKegiatan }}" data-purecounter-duration="1" class="purecounter">{{ $totalKegiatan }}</span>
+              <p><strong>Kegiatan</strong> telah diselenggarakan oleh Kwarcab Aceh Besar</p>
+            </div><!-- End Stats Item -->
+
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Stats Counter Section -->
+
+    <!-- ======= Kegiatan Terbaru Section ======= -->
+    <section id="kegiatan-terbaru" class="blog">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Kegiatan Terbaru</h2>
+          <p>Agenda dan dokumentasi kegiatan terbaru Kwarcab Aceh Besar</p>
+        </div>
+
+        <div class="row gy-4 posts-list">
+          @forelse ($kegiatanTerbaru as $keg)
+            <div class="col-lg-4 col-md-6">
+              <article>
+                <div class="post-img">
+                  <img src="{{ $keg->thumbnail ?? url('frondend/assets/img/blog/blog-'.(($loop->index % 6) + 1).'.jpg') }}" alt="{{ $keg->title }}" class="img-fluid">
+                </div>
+                <p class="post-category">
+                  <i class="bi bi-calendar-event"></i>
+                  {{ $keg->date ? \Carbon\Carbon::parse($keg->date)->translatedFormat('d F Y') : 'Tanggal menyusul' }}
+                </p>
+                <h2 class="title">
+                  <a href="{{ url('/kegiatan/detail/'.$keg->id) }}">{{ $keg->title }}</a>
+                </h2>
+                <p>{{ Str::limit(strip_tags($keg->description), 100) }}</p>
+              </article>
+            </div>
+          @empty
+            <div class="col-12 text-center py-4">
+              <p class="mb-0">Belum ada informasi kegiatan yang dipublikasikan.</p>
+            </div>
+          @endforelse
+        </div>
+
+        @if ($kegiatanTerbaru->count())
+          <div class="text-center mt-5">
+            <a href="{{ url('/kegiatan') }}" class="btn-get-started">Lihat Semua Kegiatan</a>
+          </div>
+        @endif
+
+      </div>
+    </section><!-- End Kegiatan Terbaru Section -->
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>Contact</h2>
-          <p>Nulla dolorum nulla nesciunt rerum facere sed ut inventore quam porro nihil id ratione ea sunt quis dolorem dolore earum</p>
+          <h2>Hubungi Kami</h2>
+          <p>Kwartir Cabang Gerakan Pramuka Aceh Besar siap menerima pertanyaan, saran, dan informasi seputar kepramukaan</p>
         </div>
 
         <div class="row gx-lg-0 gy-4">
@@ -124,8 +188,8 @@
               <div class="info-item d-flex">
                 <i class="bi bi-geo-alt flex-shrink-0"></i>
                 <div>
-                  <h4>Location:</h4>
-                  <p>A108 Adam Street, New York, NY 535022</p>
+                  <h4>Alamat:</h4>
+                  <p>Sekretariat Gerakan Pramuka Kwartir Cabang Aceh Besar, Jl. Banda Aceh - Medan, Lampreh Lamteungoh, Ingin Jaya, Aceh Besar, Aceh 23235</p>
                 </div>
               </div><!-- End Info Item -->
 
@@ -133,23 +197,15 @@
                 <i class="bi bi-envelope flex-shrink-0"></i>
                 <div>
                   <h4>Email:</h4>
-                  <p>info@example.com</p>
+                  <p>kwarcabacehbesar87@gmail.com</p>
                 </div>
               </div><!-- End Info Item -->
 
               <div class="info-item d-flex">
                 <i class="bi bi-phone flex-shrink-0"></i>
                 <div>
-                  <h4>Call:</h4>
-                  <p>+1 5589 55488 55</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex">
-                <i class="bi bi-clock flex-shrink-0"></i>
-                <div>
-                  <h4>Open Hours:</h4>
-                  <p>Mon-Sat: 11AM - 23PM</p>
+                  <h4>Telepon:</h4>
+                  <p>+62 812 6335 8424</p>
                 </div>
               </div><!-- End Info Item -->
             </div>
@@ -160,24 +216,24 @@
             <form action="forms/contact.php" method="post" role="form" class="php-email-form">
               <div class="row">
                 <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Nama Anda" required>
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email Anda" required>
                 </div>
               </div>
               <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subjek" required>
               </div>
               <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="7" placeholder="Message" required></textarea>
+                <textarea class="form-control" name="message" rows="7" placeholder="Pesan" required></textarea>
               </div>
               <div class="my-3">
-                <div class="loading">Loading</div>
+                <div class="loading">Mengirim...</div>
                 <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
+                <div class="sent-message">Pesan Anda telah terkirim. Terima kasih!</div>
               </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
+              <div class="text-center"><button type="submit">Kirim Pesan</button></div>
             </form>
           </div><!-- End Contact Form -->
 
