@@ -1,7 +1,10 @@
 @extends('layouts.adminauth')
 
 @section('main-content')
-<img style="width: 50%;" class="" src="{{ url('frondend/assets/img/logo-teks.png') }}" alt="">
+<div class="d-flex justify-content-center align-items-center">
+    <img class="d-none d-lg-block" src="{{ url('frondend/assets/img/logo.png') }}" alt="" style="width: 50px">
+    <h1 class="text-start" style="color: #000; font-weight: bolder; font-size: 30px; margin-top: 10px; text-align: left">KWARCAB<br>ACEH BESAR</h1>
+</div>
 {{-- <h1 class="text-dark">SIG</h1> --}}
 <h1 class="mt-5 text-dark display-4">Login </h1>
 

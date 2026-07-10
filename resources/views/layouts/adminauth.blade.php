@@ -40,7 +40,10 @@
             </div>
             <div class="col-lg-8  d-flex align-items-center justify-content-center" style="background-color: #006400; ">
                 {{-- <h1 class="text-white">SIG</h1> --}}
-                <img class="d-none d-lg-block" src="{{ url('frondend/assets/img/logo-teks.png') }}" alt="" style="width: 50%">
+                <img class="d-none d-lg-block" src="{{ url('frondend/assets/img/logo.png') }}" alt="" style="max-width: 100px">
+                <h1 class="" style="color: #fff; font-weight: bolder; font-size: 70px">KWARCAB<br>ACEH BESAR</h1>
+                {{-- <div>
+                </div> --}}
             </div>
         </div>
     </main>

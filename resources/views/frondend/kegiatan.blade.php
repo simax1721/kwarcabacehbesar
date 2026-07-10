@@ -45,7 +45,7 @@
                             <a href="{{ url('/kegiatan/detail/'.$kegiatan->id) }}">{{ $kegiatan->title }}</a>
                         </h2>
 
-                        <p>{{ Str::limit(strip_tags($kegiatan->description), 120) }}</p>
+                        <p>{!! Str::limit(strip_tags($kegiatan->description), 120) !!}</p>
 
                         <a href="{{ url('/kegiatan/detail/'.$kegiatan->id) }}" class="btn btn-sm text-white" style="background-color: #004C3F;">
                             Selengkapnya <i class="bi bi-arrow-right"></i>

@@ -48,7 +48,8 @@
 
                     <div class="content">
                         @if ($kegiatan->description)
-                            <p>{!! nl2br(e($kegiatan->description)) !!}</p>
+                            {{-- <p>{!! nl2br(e($kegiatan->description)) !!}</p> --}}
+                            <p>{!! $kegiatan->description !!}</p>
                         @else
                             <p class="fst-italic">Belum ada deskripsi untuk kegiatan ini.</p>
                         @endif
