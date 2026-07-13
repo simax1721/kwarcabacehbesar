@@ -49,20 +49,20 @@ class PendaftaranController extends Controller
                             </a>';
                 })
                 ->addColumn('readiness', function ($row) {
+                    // Minimal kuota per kelompok (peserta + pembina) agar dianggap 100% siap
+                    $minAnggota = 11;
+
                     $anggota_pa = Kegiatan_partisipan_anggota::where('kegiatan_partisipans_id', $row->id)->where('is_pa', 1)->count();
                     $anggota_pi = Kegiatan_partisipan_anggota::where('kegiatan_partisipans_id', $row->id)->where('is_pi', 1)->count();
 
-                    if ($anggota_pa > 0 && $anggota_pi > 0) {
-                        $percent = 100;
-                    } elseif ($anggota_pa > 0 || $anggota_pi > 0) {
-                        $percent = 50;
-                    } else {
-                        $percent = 0;
-                    }
+                    $percent_pa = min(100, round(($anggota_pa / $minAnggota) * 100));
+                    $percent_pi = min(100, round(($anggota_pi / $minAnggota) * 100));
 
-                    $color = $percent == 100 ? 'success' : ($percent == 50 ? 'warning' : 'danger');
+                    $percent = (int) round(($percent_pa + $percent_pi) / 2);
 
-                    return '<div class="progress" style="height: 20px; min-width: 100px;">
+                    $color = $percent == 100 ? 'success' : ($percent >= 50 ? 'warning' : 'danger');
+
+                    return '<div class="progress" style="height: 20px; min-width: 100px;" title="PA: '.$anggota_pa.'/'.$minAnggota.' • PI: '.$anggota_pi.'/'.$minAnggota.'">
                                 <div class="progress-bar bg-'.$color.'" role="progressbar" style="width: '.$percent.'%;">'.$percent.'%</div>
                             </div>';
                 })
