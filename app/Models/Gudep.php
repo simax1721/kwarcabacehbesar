@@ -28,4 +28,12 @@ class Gudep extends Model
     function user() {
         return $this->belongsToMany(User::class, 'user_gudeps', 'gudep_id', 'user_id')->withPivot('id');
     }
+
+    public function getImageAttribute($value)
+    {
+        if (!$value) return null;
+
+        $base = rtrim(env('APP_URL') . '/uploads/gudep/', '/');
+        return $base . '/' . ltrim($value, '/');
+    }
 }

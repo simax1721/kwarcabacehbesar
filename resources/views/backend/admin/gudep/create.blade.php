@@ -99,7 +99,14 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                
+                                <div class="form-group">
+                                    <label for="image">Foto Gugus Depan</label>
+                                    <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                                    <small class="form-text text-muted">Format: JPG/PNG, maksimal 2MB.</small>
+                                    <div class="mt-2">
+                                        <img id="image-preview" src="" alt="Preview" style="display:none; max-width:200px; max-height:200px; border-radius:6px;" class="border">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         {{-- <div class="form-group">
@@ -213,6 +220,19 @@
         });
 
 
+        $('#image').on('change', function (e) {
+            let file = e.target.files[0];
+            if (file) {
+                let reader = new FileReader();
+                reader.onload = function (ev) {
+                    $('#image-preview').attr('src', ev.target.result).show();
+                };
+                reader.readAsDataURL(file);
+            } else {
+                $('#image-preview').hide();
+            }
+        });
+
 
         $('#store').click(function (e) { 
             e.preventDefault();
@@ -222,6 +242,11 @@
             save_data.append('email', $('#email').val());
             save_data.append('kepsek', $('#kepsek').val());
             save_data.append('_token', '{{ csrf_token() }}');
+
+            let imageFile = $('#image')[0].files[0];
+            if (imageFile) {
+                save_data.append('image', imageFile);
+            }
 
             $.ajax({
                 type: 'POST',

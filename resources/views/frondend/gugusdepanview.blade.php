@@ -28,7 +28,7 @@
     <div class="container">
         <div class="row my-5">
             <div class="col-md-5">
-                <img class="mb-5" style="min-width: 100%; min-height: 400px; background-color: #f0f0f0;" src="" alt="">
+                <img class="mb-5 rounded" style="width: 100%; min-height: 400px; max-height: 400px; object-fit: cover; background-color: #f0f0f0;" src="{{ $gudep->image ?? url('frondend/assets/img/gudep-kosong.jpg') }}" alt="{{ $gudep->name }}">
                 
 
             </div>

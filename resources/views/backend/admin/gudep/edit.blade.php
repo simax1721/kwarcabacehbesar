@@ -99,7 +99,14 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                
+                                <div class="form-group">
+                                    <label for="image">Foto Gugus Depan</label>
+                                    <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                                    <small class="form-text text-muted">Format: JPG/PNG, maksimal 2MB. Kosongkan jika tidak ingin mengganti foto.</small>
+                                    <div class="mt-2">
+                                        <img id="image-preview" src="{{ $gudep->image ?? '' }}" alt="Preview" style="{{ $gudep->image ? '' : 'display:none;' }} max-width:200px; max-height:200px; border-radius:6px;" class="border">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         {{-- <div class="form-group">
@@ -119,7 +126,17 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <script>
-        
+
+        $('#image').on('change', function (e) {
+            let file = e.target.files[0];
+            if (file) {
+                let reader = new FileReader();
+                reader.onload = function (ev) {
+                    $('#image-preview').attr('src', ev.target.result).show();
+                };
+                reader.readAsDataURL(file);
+            }
+        });
 
         $('#update').click(function (e) { 
             e.preventDefault();
@@ -130,18 +147,26 @@
             let kepsek = $('#kepsek').val();
             let address = $('#address').val();
 
+            let form_data = new FormData();
+            form_data.append('_token', '{{ csrf_token() }}');
+            form_data.append('id', id);
+            form_data.append('nogudeppa', nogudeppa);
+            form_data.append('nogudeppi', nogudeppi);
+            form_data.append('email', email);
+            form_data.append('kepsek', kepsek);
+            form_data.append('address', address);
+
+            let imageFile = $('#image')[0].files[0];
+            if (imageFile) {
+                form_data.append('image', imageFile);
+            }
+
             $.ajax({
                 url: "/admin/data/gudep/update",
                 type: "POST",
-                data: {
-                    _token: "{{ csrf_token() }}",
-                    id: id,
-                    nogudeppa: nogudeppa,
-                    nogudeppi: nogudeppi,
-                    email: email,
-                    kepsek: kepsek,
-                    address: address
-                },
+                data: form_data,
+                processData: false,
+                contentType: false,
                 success: function(response) {
                     if (response.success) {
                         toastr.success('Data gugus depan berhasil perbaharui');
@@ -150,6 +175,7 @@
                 },
                 error: function(xhr, status, error) {
                     console.error(xhr.responseText);
+                    xhr.responseJSON?.image ? toastr.error(xhr.responseJSON.image[0]) : toastr.error('Data gagal diperbarui!');
                 }
             });
         });

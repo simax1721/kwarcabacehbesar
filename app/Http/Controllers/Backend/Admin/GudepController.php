@@ -45,10 +45,18 @@ class GudepController extends Controller
             'district_name' => 'nullable|string',
             'lang' => 'nullable',
             'long' => 'nullable',
+            'image' => 'nullable|image|max:2048',
         ]);
          //check if validation fails
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
+        }
+
+        $filename = null;
+        $file = $request->file('image');
+        if ($file) {
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads/gudep'), $filename);
         }
 
         Gudep::create([
@@ -58,6 +66,7 @@ class GudepController extends Controller
             'email' => $request->get('email') ?? null,
             'kepsek' => $request->get('kepsek') ?? null,
             'name' => $request->get('name') ?? null,
+            'image' => $filename,
             'grade' => $request->get('grade') ?? null,
             'status' => $request->get('status') ?? null,
             'accreditation' => $request->get('accreditation') ?? null,
@@ -97,13 +106,28 @@ class GudepController extends Controller
 
         $gudep = Gudep::findOrFail($request->get('id'));
 
-        $gudep->update([
+        $data = [
             'nogudeppa' => $request->get('nogudeppa') ?? null,
             'nogudeppi' => $request->get('nogudeppi') ?? null,
             'email' => $request->get('email') ?? null,
             'kepsek' => $request->get('kepsek') ?? null,
             'address' => $request->get('address') ?? null,
-        ]);
+        ];
+
+        $file = $request->file('image');
+        if ($file) {
+            $oldFilename = $gudep->getRawOriginal('image');
+            if ($oldFilename && file_exists(public_path('uploads/gudep/' . $oldFilename))) {
+                unlink(public_path('uploads/gudep/' . $oldFilename));
+            }
+
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads/gudep'), $filename);
+
+            $data['image'] = $filename;
+        }
+
+        $gudep->update($data);
 
         return response()->json([
             'success' => true,
@@ -190,6 +214,12 @@ class GudepController extends Controller
                 ->addColumn('namagudep', function ($data) {
                     return $data->name;
                 })
+                ->addColumn('foto', function ($data) {
+                    if ($data->image) {
+                        return '<img src="'.$data->image.'" alt="Foto Gudep" style="width:150px;height:150px;object-fit:cover;border-radius:6px;">';
+                    }
+                    return '<span class="text-muted">-</span>';
+                })
                 ->addColumn('jenjang', function ($data) {
                     return $data->grade;
                 })
@@ -203,7 +233,7 @@ class GudepController extends Controller
                             <a href="javascript:void(0)" id="btn-delete" data-id="' . $data->id . '" class="btn btn-sm btn-danger">Delete</a>
                             </div>';
                 })
-                ->rawColumns(['action'])
+                ->rawColumns(['action', 'foto'])
                 ->addIndexColumn()
                 ->make(true);
         }

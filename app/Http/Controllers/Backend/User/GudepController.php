@@ -14,14 +14,13 @@ class GudepController extends Controller
     }
 
     function post_update(Request $request, $id) {
-        // Validation and updating logic here
         $gudep = Gudep::findOrFail($id);
 
         $validator = \Illuminate\Support\Facades\Validator::make($request->all(),[
             'email' => 'nullable|email',
             'kepsek' => 'nullable|string|max:255',
+            'image' => 'nullable|image|max:2048',
         ]);
-         //check if validation fails
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
@@ -34,10 +33,25 @@ class GudepController extends Controller
             ]);
         }
 
-        $gudep->update([
+        $data = [
             'email' => $request->get('email') ?? $gudep->email,
             'kepsek' => $request->get('kepsek') ?? $gudep->kepsek,
-        ]);
+        ];
+
+        $file = $request->file('image');
+        if ($file) {
+            $oldFilename = $gudep->getRawOriginal('image');
+            if ($oldFilename && file_exists(public_path('uploads/gudep/' . $oldFilename))) {
+                unlink(public_path('uploads/gudep/' . $oldFilename));
+            }
+
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads/gudep'), $filename);
+
+            $data['image'] = $filename;
+        }
+
+        $gudep->update($data);
 
         return response()->json([
             'icon' => 'success',

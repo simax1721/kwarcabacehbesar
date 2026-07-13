@@ -24,6 +24,7 @@
                         <th>Nama Gudep</th>
                         <th>Jenjang</th>
                         <th>Kepala Sekolah</th>
+                        <th>Foto</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -34,6 +35,7 @@
                         <th>Nama Gudep</th>
                         <th>Jenjang</th>
                         <th>Kepala Sekolah</th>
+                        <th>Foto</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>
@@ -64,6 +66,7 @@
           {data:'namagudep',name:'namagudep'},
           {data:'jenjang',name:'jenjang'},
           {data:'kepsek',name:'kepsek'},
+          {data:'foto',name:'foto', orderable: false, searchable: false},
           {data:'action',name:'action', orderable: false, searchable: false},
         ],
         order: [[0, 'desc']]
